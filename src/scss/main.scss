@@ -1,0 +1,107 @@
+// @font-face {
+//   font-family: Quicksand-Bold;
+//   src: url('~@fonts/Quicksand/Quicksand-Bold.woff') format('woff'),
+//        url('~@fonts/Quicksand/Quicksand-Bold.ttf') format('truetype');
+// }
+
+$mainFont                : Times New Roman;
+$headerFont              : Arial;
+
+$dark-50                 : rgba(#1f2041,.5);
+$dark-25                 : rgba(#1f2041,.25);
+$purple-color            : #bc9cff;
+// $mainFont               : 10px;
+$top_buttons : 10vw;
+
+//миксин, чтобы спрятать что-нибудь
+@mixin invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+//позволяет вставить строку size(ширина,высота)
+@mixin size($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/*БЛОК СБРОСА СТИЛЕЙ*/
+
+@import "resets.scss";
+
+/*/////////////////////////////////////////////*/
+
+body {
+    position: relative;
+    font-family: $mainFont;
+}
+
+header.title {
+    position: absolute;
+    top: 0;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1),rgba(0,0,0,0));
+    width: 100%;
+}
+
+
+/*БЛОК ВВОДА В ЗАГОЛОВКЕ*/
+
+@import 'title_inputs.scss';
+
+/*БЛОК МЕНЮ СУЖЕНИЯ*/
+
+@import "numeric_adaptation.scss";
+
+/*БЛОК СТАТИСТИКИ*/
+
+@import 'sort_buttons.scss';
+
+/*БЛОК КНОПОК*/
+
+/*панель кнопок справа*/
+section.sidebar #palitra {
+    padding-right: 5px;
+    background-color: rgba(0,0,0,0);
+    color: rgba(0,0,0,0.6);
+}
+
+@import 'palitra_buttons.scss';
+
+/*панель кнопок слева*/
+#left_panel {
+    position: absolute;
+    top: $top_buttons;
+    left: 5px;
+}
+
+/*стили чекбоксов*/
+@import "checkbox.scss";
+
+/*стили отображения меню подсказок*/
+@import "help_description.scss";
+
+
+
+/*НИЖНИЙ БЛОК*/
+
+footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(rgba(256,256,256,0),rgba(256,256,256,0.2),rgba(256,256,256,0.6));
+    text-align: center;
+    padding: 0 8%;
+    padding-bottom: 1%;
+    width: 100%;
+}
+
+/*кнопки отмены и повтора*/
+@import 'undo_redo.scss';
+
+/*Выбор типа мандалы*/
+@import 'selected_mandala_type.scss';

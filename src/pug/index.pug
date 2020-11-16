@@ -1,0 +1,109 @@
+include ./checkbox
+include ./help_description
+
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(rel='shortcut icon', type='image/x-icon', href=require('@images/mandalas2.ico'))
+  title Mandalas
+
+body
+  .bodywrapper
+    header.title
+
+      #header_input_form
+        #number_of_symbols_box
+          input#number_of_symbols(type='number', min='1')
+          #number_of_symbols__clear
+        input#title_input(type='text', placeholder='Название мандалы')
+        button#clear_button
+
+      #numeric_adaptation
+        //- .numeric_adaptation_item_first
+        //- .numeric_adaptation_item
+        //- .numeric_adaptation_item
+        //- (it add`s from JS)
+
+
+    section.sidebar
+
+      article#statistic
+        #statistic_sort_button.bg_arrow_down(title='Сортировка статистики')
+        - for (let i=1; i<10; i++) {
+          div 0
+        - }
+        
+        - let right_panel = [
+        - {title:'Статистика', content : 'S'},
+        - {title: '1', content : '1'},
+        - {title: '2', content : '2'},
+        - {title: '3', content : '3'},
+        - {title: '4', content : '4'},
+        - {title: '5', content : '5'},
+        - {title: '6', content : '6'},
+        - {title: '7', content : '7'},
+        - {title: '8', content : '8'},
+        - {title: '9', content : '9'},
+        - {title: 'Цветовые схемы', content : 'C'},
+        - {title: 'Серая схема', content : 'G'},
+        - {title: 'Убрать помощь справа', content : '?', position : 'right'},
+        - ];
+
+      #palitra
+        - for (let i=0; i<right_panel.length; i++) {
+          .palitra_button( title=right_panel[i].title position = right_panel[i].position) #{right_panel[i].content}
+        - }
+        
+
+        - let left_panel = [
+        - {title:'Убрать сетку', content : '#'},
+        - {title: 'Убрать все цвета', content : 'X'},
+        - {title: 'Поменять активные с невидимыми', content : '@'},
+        - {title: 'Вернуть все цвета', content : 'A'},
+        - {title: 'Поменять цвет обводки', content : 'B'},
+        - {title: 'Убрать/отобразить обводку', content : 'b'},
+        - {title: 'Убрать/отобразить цифры', content : '№'},
+        - {title: 'Точечный режим', content : '\u2219'},
+        - {title: 'Приблизить', content : '+'},
+        - {title: 'Отдалить', content : '-'},
+        - {title: 'Развернуть на весь экран', content : '\u25A3'},
+        - {title: 'Сохранить настройки отображения', name : 'visual_check'},
+        - {title: 'Убрать помощь слева', content : '?', position : 'left'},
+        - ];
+
+    #left_panel
+      - for (let i=0; i<left_panel.length; i++) {
+      - if (!left_panel[i].name)
+        .palitra_button( title=left_panel[i].title position = left_panel[i].position) #{left_panel[i].content}
+      - else
+        +checkbox( {title: left_panel[i].title, name: left_panel[i].name} )
+      - }
+      
+
+    #help_panel.left
+      - for (let i=0; i<left_panel.length; i++) {
+        +help_description
+      - }
+
+    #help_panel.right
+      - for (let i=0; i< right_panel.length; i++) {
+        +help_description
+      - }
+
+    footer
+      button#undo_button.bg_undo_redo(title='Предыдущее значение')
+        span 0
+      button#redo_button.bg_undo_redo.redo_to_copy(title='Следующее значение')
+        span 0
+      label.select_mandala_type(for='select_mandala_type')
+        //- | Выберите тип мандалы
+        select#select_mandala_type.bg_arrow_down(name='select_mandala_type')
+          option(value='4') квадрат (по три)
+          option(value='2') квадрат (по три) =11=
+          option(value='3') квадрат (по три) "ромб"
+          option(value='5') квадрат (по три) "ромб" =11=
+          option(value='8') квадрат шахматный расчёт (1вар)
+          option(value='9') квадрат шахматный расчёт (2вар)
+          option(value='6') квадрат шахматный расчёт (1вар) =11=
+          option(value='7') квадрат шахматный расчёт (2вар) =11=

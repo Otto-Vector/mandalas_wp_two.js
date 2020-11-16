@@ -1,0 +1,37 @@
+#help_panel {
+
+    position: absolute;
+    top: $top_buttons;
+    transform: scaleX(0);
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(1,1,0,1);
+
+    &.left {
+        text-align: left;
+        left: 50px;
+        transform-origin: left;
+    }
+
+    &.right {
+        text-align: right;
+        right: 50px;
+        transform-origin: right;
+    }
+
+    &.active {
+    	transform: scaleX(1);
+    }
+}
+
+.help_description {
+	
+	font-size: 11px;
+	padding: 8.15px 0;
+	font-weight: bold;
+    user-select: none;
+
+	&__text {
+        background: radial-gradient(rgba(255,255,255,1), rgba(255,255,255,0.3)75%, rgba(0,0,0,0)90% );
+	}
+
+}
